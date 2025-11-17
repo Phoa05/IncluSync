@@ -7,6 +7,8 @@ import com.fiap.IncluSync.port.out.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class UserUseCase implements IUser {
@@ -16,5 +18,10 @@ public class UserUseCase implements IUser {
     @Override
     public UserResponseDto getUser(String email) {
         return UserMapper.instance.toResponseDto(userRepository.findByEmail(email));
+    }
+
+    @Override
+    public List<UserResponseDto> findAll() {
+        return UserMapper.instance.toListResponseDto(userRepository.getUsers());
     }
 }

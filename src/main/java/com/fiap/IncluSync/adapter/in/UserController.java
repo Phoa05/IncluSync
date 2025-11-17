@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Slf4j
 @RestController
@@ -24,6 +26,13 @@ public class UserController {
         log.info("User {} find successfully", email);
 
         return ResponseEntity.ok(userSearched);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<UserResponseDto>> findAllUsers(){
+        List<UserResponseDto> usersFound = user.findAll();
+        log.info("{} users found successfully",  usersFound.size());
+        return ResponseEntity.ok(usersFound);
     }
 
 }

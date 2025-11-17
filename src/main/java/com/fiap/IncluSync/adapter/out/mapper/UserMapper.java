@@ -8,6 +8,8 @@ import com.fiap.IncluSync.application.domain.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
     UserMapper instance = Mappers.getMapper(UserMapper.class);
@@ -17,4 +19,6 @@ public interface UserMapper {
     User toDomain(SignupRequestDto requestDto);
     User toDomain(LoginRequestDto requestDto);
     UserResponseDto toResponseDto(User user);
+    List<UserResponseDto> toListResponseDto(List<User> users);
+    List<User> toListDomain(List<UserEntity> users);
 }
