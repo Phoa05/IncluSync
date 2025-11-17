@@ -5,6 +5,5 @@ import com.fiap.IncluSync.adapter.in.dto.SignupRequestDto;
 import com.fiap.IncluSync.adapter.in.dto.UserResponseDto;
 
 public interface IAuth {
-    UserResponseDto create(SignupRequestDto user);
-    void authenticate(LoginRequestDto user);
+    void authenticate(LoginRequestDto newUser);
 }
