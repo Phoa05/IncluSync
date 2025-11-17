@@ -9,8 +9,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface AuthMapper {
-    AuthMapper instance = Mappers.getMapper(AuthMapper.class);
+public interface UserMapper {
+    UserMapper instance = Mappers.getMapper(UserMapper.class);
 
     UserEntity toEntity(User user);
     User toDomain(UserEntity entity);

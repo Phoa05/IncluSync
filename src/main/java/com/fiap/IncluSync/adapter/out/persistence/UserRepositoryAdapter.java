@@ -1,6 +1,6 @@
 package com.fiap.IncluSync.adapter.out.persistence;
 
-import com.fiap.IncluSync.adapter.out.mapper.AuthMapper;
+import com.fiap.IncluSync.adapter.out.mapper.UserMapper;
 import com.fiap.IncluSync.adapter.out.persistence.entity.UserEntity;
 import com.fiap.IncluSync.adapter.out.persistence.infrastructure.AuthRepository;
 import com.fiap.IncluSync.application.domain.User;
@@ -19,10 +19,10 @@ public class UserRepositoryAdapter implements UserRepository {
 
     @Override
     public User save(User user) {
-        UserEntity newEntity = authRepository.save(AuthMapper.instance.toEntity(user));
+        UserEntity newEntity = authRepository.save(UserMapper.instance.toEntity(user));
         log.info("User saved with id {}", newEntity.getId());
 
-        return AuthMapper.instance.toDomain(newEntity);
+        return UserMapper.instance.toDomain(newEntity);
     }
 
     @Override
@@ -35,6 +35,6 @@ public class UserRepositoryAdapter implements UserRepository {
         UserEntity entity = authRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException("User " + email + " not found"));
         log.info("User found with email {}", entity.getEmail());
 
-        return AuthMapper.instance.toDomain(entity);
+        return UserMapper.instance.toDomain(entity);
     }
 }
