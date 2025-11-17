@@ -7,4 +7,5 @@ import java.util.List;
 public interface IUser {
     UserResponseDto getUser(String email);
     List<UserResponseDto> findAll();
+    void deleteUser(String emailUser, String emailAdmin);
 }

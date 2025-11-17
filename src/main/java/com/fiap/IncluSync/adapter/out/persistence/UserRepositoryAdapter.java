@@ -45,4 +45,10 @@ public class UserRepositoryAdapter implements UserRepository {
         List<UserEntity> users = userJpaRepository.findAllUsers().orElseThrow(() -> new UserNotFoundException("There are no registered users"));
         return UserMapper.instance.toListDomain(users);
     }
+
+    @Override
+    public void deleteUser(Long userId) {
+        userJpaRepository.deleteById(userId);
+    }
+
 }
