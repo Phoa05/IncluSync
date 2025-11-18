@@ -4,6 +4,7 @@ import com.fiap.IncluSync.adapter.in.station.dto.StationRequestDto;
 import com.fiap.IncluSync.adapter.in.station.dto.StationResponseDto;
 import com.fiap.IncluSync.adapter.out.mapper.StationMapper;
 import com.fiap.IncluSync.application.domain.Station;
+import com.fiap.IncluSync.application.exception.StationNotFoundException;
 import com.fiap.IncluSync.application.exception.StationRegisteredException;
 import com.fiap.IncluSync.port.in.IStation;
 import com.fiap.IncluSync.port.out.StationRepository;
@@ -26,4 +27,17 @@ public class StationUseCase implements IStation {
 
         return StationMapper.intance.toResponseDto(stationRepository.register(station));
     }
+
+    @Override
+    public StationResponseDto update(StationRequestDto requestDto) {
+        Station station = StationMapper.intance.toDomain(requestDto);
+
+        if (!stationRepository.existsByName(station.getName())) {
+            throw new StationNotFoundException("Station " + station.getName() + " not registered!");
+        }
+
+        return StationMapper.intance.toResponseDto(stationRepository.update(station));
+    }
+
+
 }

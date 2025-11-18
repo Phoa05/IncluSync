@@ -54,4 +54,14 @@ public class RestHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
     }
 
+    @ExceptionHandler(value = {StationNotFoundException.class})
+    public ResponseEntity<Erro> handleStationNotFoundException(Exception e) {
+        Erro erro = new Erro();
+        erro.setCode("RT0005");
+        erro.setStatus(HttpStatus.NOT_FOUND);
+        erro.setMessage(e.getMessage());
+        log.error(erro.toString());
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
+    }
 }

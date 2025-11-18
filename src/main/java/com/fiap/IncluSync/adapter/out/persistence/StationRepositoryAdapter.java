@@ -32,5 +32,13 @@ public class StationRepositoryAdapter implements StationRepository {
         return StationMapper.intance.toDomain(entity);
     }
 
+    @Override
+    public Station update(Station station) {
+        StationEntity entity = stationJpaRepository.save(StationMapper.intance.toEntity(station));
+        log.info("Station {} updated", entity.getId());
+
+        return StationMapper.intance.toDomain(entity);
+    }
+
 
 }

@@ -5,4 +5,5 @@ import com.fiap.IncluSync.adapter.in.station.dto.StationResponseDto;
 
 public interface IStation {
     StationResponseDto register(StationRequestDto requestDto);
+    StationResponseDto update(StationRequestDto requestDto);
 }
