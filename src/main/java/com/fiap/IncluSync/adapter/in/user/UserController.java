@@ -43,8 +43,8 @@ public class UserController {
     }
 
     @DeleteMapping
-    public ResponseEntity<?> deleteUser(@RequestHeader String userEmail, @RequestHeader String admin){
-        user.deleteUser(userEmail, admin);
+    public ResponseEntity<?> deleteUser(@RequestHeader String userEmail, @RequestHeader String adminEmail){
+        user.deleteUser(userEmail, adminEmail);
         log.info("User {} delete successfully", userEmail);
 
         return ResponseEntity.noContent().build();

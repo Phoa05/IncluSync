@@ -4,6 +4,7 @@ import com.fiap.IncluSync.adapter.out.mapper.StationMapper;
 import com.fiap.IncluSync.adapter.out.persistence.entity.StationEntity;
 import com.fiap.IncluSync.adapter.out.persistence.infrastructure.StationJpaRepository;
 import com.fiap.IncluSync.application.domain.Station;
+import com.fiap.IncluSync.application.exception.StationNotFoundException;
 import com.fiap.IncluSync.port.out.StationRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +44,11 @@ public class StationRepositoryAdapter implements StationRepository {
 
     @Override
     public List<Station> getAllStations() {
-        return StationMapper.intance.toListDomain(stationJpaRepository.findAll());
+        List<StationEntity> stations = stationJpaRepository.findAll();
+        if (stations.isEmpty()) {
+            throw new StationNotFoundException("No stations found");
+        }
+        return StationMapper.intance.toListDomain(stations);
     }
 
 
