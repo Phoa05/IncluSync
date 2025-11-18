@@ -42,7 +42,7 @@ public class UserRepositoryAdapter implements UserRepository {
 
     @Override
     public List<User> getUsers() {
-        List<UserEntity> users = userJpaRepository.findAllUsers().orElseThrow(() -> new UserNotFoundException("There are no registered users"));
+        List<UserEntity> users = userJpaRepository.findAll();
         return UserMapper.instance.toListDomain(users);
     }
 
