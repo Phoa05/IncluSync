@@ -11,6 +11,8 @@ import com.fiap.IncluSync.port.out.StationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class StationUseCase implements IStation {
@@ -37,6 +39,11 @@ public class StationUseCase implements IStation {
         }
 
         return StationMapper.intance.toResponseDto(stationRepository.update(station));
+    }
+
+    @Override
+    public List<StationResponseDto> getAllStations() {
+        return StationMapper.intance.toListResponseDto(stationRepository.getAllStations());
     }
 
 

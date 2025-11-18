@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -38,6 +39,11 @@ public class StationRepositoryAdapter implements StationRepository {
         log.info("Station {} updated", entity.getId());
 
         return StationMapper.intance.toDomain(entity);
+    }
+
+    @Override
+    public List<Station> getAllStations() {
+        return StationMapper.intance.toListDomain(stationJpaRepository.findAll());
     }
 
 

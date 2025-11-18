@@ -7,6 +7,8 @@ import com.fiap.IncluSync.application.domain.Station;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface StationMapper {
     StationMapper intance = Mappers.getMapper(StationMapper.class);
@@ -15,4 +17,6 @@ public interface StationMapper {
     Station toDomain(StationEntity entity);
     Station toDomain(StationRequestDto requestDto);
     StationResponseDto toResponseDto(Station station);
+    List<Station> toListDomain(List<StationEntity> list);
+    List<StationResponseDto> toListResponseDto(List<Station> list);
 }

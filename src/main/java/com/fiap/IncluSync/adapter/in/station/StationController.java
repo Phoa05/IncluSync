@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Slf4j
 @RestController
@@ -31,5 +33,13 @@ public class StationController {
         log.info("Station {} update successfully!", stationResponseDto.getName());
 
         return ResponseEntity.ok(stationResponseDto);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<StationResponseDto>> getStations(){
+        List<StationResponseDto> stations = stationService.getAllStations();
+        log.info("{} stations found successfully!", stations.size());
+
+        return ResponseEntity.ok(stations);
     }
 }
