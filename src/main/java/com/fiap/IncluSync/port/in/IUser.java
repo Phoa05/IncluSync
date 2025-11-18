@@ -1,7 +1,7 @@
 package com.fiap.IncluSync.port.in;
 
-import com.fiap.IncluSync.adapter.in.dto.SignupRequestDto;
-import com.fiap.IncluSync.adapter.in.dto.UserResponseDto;
+import com.fiap.IncluSync.adapter.in.user.dto.SignupRequestDto;
+import com.fiap.IncluSync.adapter.in.user.dto.UserResponseDto;
 
 import java.util.List;
 

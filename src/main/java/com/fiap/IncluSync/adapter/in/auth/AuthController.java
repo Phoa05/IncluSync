@@ -1,6 +1,6 @@
-package com.fiap.IncluSync.adapter.in;
+package com.fiap.IncluSync.adapter.in.auth;
 
-import com.fiap.IncluSync.adapter.in.dto.LoginRequestDto;
+import com.fiap.IncluSync.adapter.in.auth.dto.LoginRequestDto;
 import com.fiap.IncluSync.port.in.IAuth;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

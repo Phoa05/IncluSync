@@ -42,4 +42,16 @@ public class RestHandler {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
     }
+
+    @ExceptionHandler(value = {StationRegisteredException.class})
+    public ResponseEntity<Erro> handleStationRegisteredException(Exception e) {
+        Erro erro = new Erro();
+        erro.setCode("RT0004");
+        erro.setStatus(HttpStatus.CONFLICT);
+        erro.setMessage(e.getMessage());
+        log.error(erro.toString());
+
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
+    }
+
 }

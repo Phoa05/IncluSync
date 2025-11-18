@@ -1,4 +1,4 @@
-package com.fiap.IncluSync.adapter.in.dto;
+package com.fiap.IncluSync.adapter.in.user.dto;
 
 import lombok.Data;
 

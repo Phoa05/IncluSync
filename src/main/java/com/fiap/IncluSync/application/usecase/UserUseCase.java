@@ -1,7 +1,7 @@
 package com.fiap.IncluSync.application.usecase;
 
-import com.fiap.IncluSync.adapter.in.dto.SignupRequestDto;
-import com.fiap.IncluSync.adapter.in.dto.UserResponseDto;
+import com.fiap.IncluSync.adapter.in.user.dto.SignupRequestDto;
+import com.fiap.IncluSync.adapter.in.user.dto.UserResponseDto;
 import com.fiap.IncluSync.adapter.out.mapper.UserMapper;
 import com.fiap.IncluSync.application.domain.User;
 import com.fiap.IncluSync.application.exception.UnauthorizedException;

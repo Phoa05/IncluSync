@@ -1,8 +1,8 @@
 package com.fiap.IncluSync.adapter.out.mapper;
 
-import com.fiap.IncluSync.adapter.in.dto.LoginRequestDto;
-import com.fiap.IncluSync.adapter.in.dto.SignupRequestDto;
-import com.fiap.IncluSync.adapter.in.dto.UserResponseDto;
+import com.fiap.IncluSync.adapter.in.auth.dto.LoginRequestDto;
+import com.fiap.IncluSync.adapter.in.user.dto.SignupRequestDto;
+import com.fiap.IncluSync.adapter.in.user.dto.UserResponseDto;
 import com.fiap.IncluSync.adapter.out.persistence.entity.UserEntity;
 import com.fiap.IncluSync.application.domain.User;
 import org.mapstruct.Mapper;
