@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("exp://192.168.68.115:8081")
 @RequiredArgsConstructor
 @Slf4j
 @RestController
@@ -42,4 +43,5 @@ public class StationController {
 
         return ResponseEntity.ok(stations);
     }
+
 }
