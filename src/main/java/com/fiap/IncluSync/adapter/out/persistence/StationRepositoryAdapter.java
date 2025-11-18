@@ -36,10 +36,16 @@ public class StationRepositoryAdapter implements StationRepository {
 
     @Override
     public Station update(Station station) {
+        station.setId(findByName(station.getName()).getId());
+        station.setUpdatedAt(LocalDateTime.now());
         StationEntity entity = stationJpaRepository.save(StationMapper.intance.toEntity(station));
         log.info("Station {} updated", entity.getId());
 
         return StationMapper.intance.toDomain(entity);
+    }
+
+    private StationEntity findByName(String name) {
+        return stationJpaRepository.findByName(name);
     }
 
     @Override
