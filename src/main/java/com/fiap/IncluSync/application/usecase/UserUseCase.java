@@ -9,10 +9,12 @@ import com.fiap.IncluSync.application.exception.UserExistsException;
 import com.fiap.IncluSync.port.in.IUser;
 import com.fiap.IncluSync.port.out.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class UserUseCase implements IUser {
