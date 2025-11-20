@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,4 +19,8 @@ public class Station {
     private String elevatorStatus;
     private OverAllStatus overallStatus;
     private LocalDateTime updatedAt;
+
+    private String line;
+    private List<String> connections;
+    private List<String> directions;
 }

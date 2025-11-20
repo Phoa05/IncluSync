@@ -32,25 +32,47 @@ public class OpenAiService implements IOpenAi {
         User user = userRepository.findByEmail(directionAi.getEmail());
         List<Station> stationList = stationRepository.getAllStations();
 
-        response.setMessage(model.generate("considerando se a pessoa possui deficiencia de mobilidade e os status das estações\n" +
-                "\n" +
-                "Possui deficiencia?" + user.isHasMobilityIssue()+"\n" +
-                "Status das estações: {" + stationList + "}\n" +
-                "\n" +
-                "Descreva qual a melhor rota DE METRO em são paulo, partindo de " + directionAi.getStartAdd()+", com o objetivo de chegar em "+directionAi.getEndAdd()+". Considerando que pessoas com deficiencia física precisam utilizar estações cujas ferramentas de inclusão (rampas e elevadores) estejam em plena funcionalidade. (lembrando de responder em portugues brasil e valide se o caminho está correto)\n" +
-                "\n" +
-                "Não digite nada além do caminho, neste padrão:\n" +
-                "----------------------------------------\n" +
-                "Partida:       Jabaquara\n" +
-                "Linha:         1 - Azul\n" +
-                "Sentido:       Tucuruvi\n" +
-                "\n" +
-                "Baldeação:     Para Linha 2 - Verde - Estação Paraiso\n" +
-                "Sentido:       Vila Madalena\n" +
-                "Estações deslocadas: 3\n" +
-                "\n" +
-                "Destino:       Trianon–Masp\n" +
-                "---------------------------------------- "));
+        response.setMessage(model.generate(
+                "Considere que o usuário pode ter deficiência de mobilidade, e ele só pode utilizar estações com acessibilidade totalmente funcional (elevadores e rampas operantes).\n" +
+                        "\n" +
+                        "Possui deficiência de mobilidade: " + user.isHasMobilityIssue() + "\n" +
+                        "Status das estações (com nomes exatos + status de acessibilidade): {" + stationList + "}.\n" +
+                        "\n" +
+                        "Objetivo:\n" +
+                        "Descrever EXATAMENTE UMA rota de metrô em São Paulo, partindo de " + directionAi.getStartAdd() + " e chegando em " + directionAi.getEndAdd() + ".\n" +
+                        "\n" +
+                        "Regras obrigatórias:\n" +
+                        "- Utilize TODAS as linhas possíveis do metrô/monotrilho/CPTM que façam sentido para o menor caminho, incluindo linhas privadas como a Linha 4-Amarela e 5-Lilás.\n" +
+                        "- NÃO exiba nenhuma estação cujo status de acessibilidade esteja indisponível.\n" +
+                        "- NÃO escreva notas, explicações, avisos, justificativas ou qualquer texto fora do padrão solicitado.\n" +
+                        "- O sentido deve ser o sentido REAL que o usuário irá PEGAR.\n" +
+                        "- Sempre exiba o status de acessibilidade de cada estação.\n" +
+                        "- Exibir somente UM caminho, completo, com todas as baldeações necessárias.\n" +
+                        "- Realize a menor quantidade de baldeações possíveis.\n" +
+                        "\n" +
+                        "Formato obrigatório da resposta:\n" +
+                        "----------------------------------------\n" +
+                        "Partida:       [Nome da estação]\n" +
+                        "Linha:         [Número e nome da linha]\n" +
+                        "Sentido:       [Sentido correto]\n" +
+                        "Status da acessibilidade: [Informação da estação]\n" +
+                        "Temperatura: [Temperatura média da estação]\n" +
+                        "Nível de lotação (0-100): [crowd_level]\n" +
+                        "\n" +
+                        "Baldeação:     Estação [Nome]\n" +
+                        "Sentido:       [Sentido correto]\n" +
+                        "Status da acessibilidade: [Informação da estação]\n" +
+                        "Temperatura: [Temperatura média da estação]\n" +
+                        "Nível de lotação (0-100): [crowd_level]\n" +
+                        "\n" +
+                        "Destino:       [Nome da estação final]\n" +
+                        "----------------------------------------\n" +
+                        "\n" +
+                        "Gere agora a rota seguindo EXATAMENTE esse formato e nada além disso."
+        ));
+
+
+
 
         return response;
     }

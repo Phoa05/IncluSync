@@ -19,7 +19,6 @@ public class StationEntity {
     private Long id;
 
     private String name;
-
     private String temperature;
 
     @Column(name = "crowd_level")
@@ -34,4 +33,10 @@ public class StationEntity {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    private String line;
+
+    // connections vira String
+    @Column(length = 2000)
+    private String connections;
 }
