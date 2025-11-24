@@ -82,6 +82,13 @@ CREATE TABLE stations (
 
 Inclui usuários e várias estações com status diversos. 
 
+#### Acesso de Usuarios 
+- Admin: ` sobral@gmail.com `
+          `sobral123`
+
+- Usuario: `pedro@gmail.com` 
+            `pedro123`
+
 ------------------------------------------------------------------------
 
 ### Recuperando a Key no código
